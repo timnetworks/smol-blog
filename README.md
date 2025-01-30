@@ -12,10 +12,12 @@ In sets of ten posts per page.
 * Basic paragraphs
 ### Basic HTML Passthrough
 Won't eat your img src links
-### Single Page
+### Daily posts
+Maximum. Don't dilly dally.
+### Single File
 Drag and drop elsewhere, no databases, no cloud accounts, no integration, not even a hidden preferences file.
 
 ## Usage:
 
 ### Download
-Downoad the file and drop it on your local (or remote) webserver. As long as you can parse PHP, and it's recent enough, it should work.
+Downoad the file and drop it on your local (or remote) webserver. Create a folder named posts and drop your entries there in the format of **YYYYMMDD.md**. As long as you can parse PHP, and it's recent enough, it should work.
