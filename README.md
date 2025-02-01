@@ -1,23 +1,29 @@
 # smol-blog
-smolBlog - one simple php page and that's about it.
+smolBlog - one simple php page and that's about it. *plus optional new post page*
 
 ## Features:
 
-### Pagination
+### Latest Posts Pagination
 In sets of ten posts per page.
-### Markdown
+### Markdown Support
 * Headers
-* Bold text (text)
-* Italic text (text)
-* Basic paragraphs
+* Bold text
+* Italic text
+* Underline text
+* Paragraphs
+* Lists
+* Code Blocks
+* Inline Code
+* Blockquotes
+* Images  
 ### Basic HTML Passthrough
-Won't eat your img src links
+You can do rudimentary code here without worries. Try not to break your own site.
 ### Daily posts
-Maximum. Don't dilly dally.
+Single post per day. Any additional posts are appended to the same date.
 ### Single File
-Drag and drop elsewhere, no databases, no cloud accounts, no integration, not even a hidden preferences file.
+Single file runtime. *Optional second file for new posts.*
 
 ## Usage:
 
 ### Download
-Downoad the file and drop it on your local (or remote) webserver. Create a folder named posts and drop your entries there in the format of **YYYYMMDD.md**. As long as you can parse PHP, and it's recent enough, it should work.
+Downoad the file and drop it on your local (or remote) webserver. Create a folder named posts and drop your entries there in the format of **YYYYMMDD.md**. As long as you can parse PHP, and it's recent enough, it should work. If using the optional new post page, it'll create a directory and autoassign filenames based on date.
