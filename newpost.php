@@ -61,85 +61,200 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Blog Post</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #f5f5f5;
+    /* Base colors */
+    :root {
+        --bg-primary: #FFFEF1;
+        --bg-secondary: #F5F4E8;
+        --bg-tertiary: #ECEADD;
+        --text-primary: #2C3E50;
+        --text-secondary: #546E7A;
+        --accent-primary: #B58900;
+        --accent-secondary: #268BD2;
+        --border-color: #E6E4D1;
+        --code-bg: #F7F6E9;
+        --blockquote-bg: #FAFAF2;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        color: var(--accent-primary);
+        margin: 0;
+    }
+
+    .subtitle {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: var(--border-color);
+        margin: 2rem 0;
+    }
+
+    article {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+    }
+
+    .post-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .post-date a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+    }
+
+    .post-date a:hover {
+        text-decoration: underline;
+    }
+       
+    img {
+            max-width: 100%;
+            height: auto;
         }
-        
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .message {
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            background: #f0f0f0;
-            color: #333;
-        }
-        
-        .error {
-            background: #fee;
-            color: #c00;
-        }
-        
-        .success {
-            background: #efe;
-            color: #0c0;
-        }
-        
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        label {
-            font-weight: bold;
-        }
-        
-        input[type="password"] {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        textarea {
-            min-height: 300px;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-        
-        button {
-            padding: 0.5rem 1rem;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        button:hover {
-            background: #444;
-        }
-        
-        .help {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ddd;
-        }
+
+    /* Pagination styles */
+    .pagination {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+
+    .pagination a, .pagination span {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        border-radius: 4px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .pagination .current {
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border-color: var(--accent-primary);
+    }
+
+    .pagination a:hover {
+        background: var(--bg-tertiary);
+    }
+
+    /* Markdown Content Styles */
+    .post-content h1, .post-content h2, .post-content h3, 
+    .post-content h4, .post-content h5, .post-content h6 {
+        color: var(--accent-primary);
+    }
+
+    .post-content a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+    }
+
+    .post-content a:hover {
+        text-decoration: underline;
+    }
+
+    .post-content blockquote {
+        border-left: 4px solid var(--accent-primary);
+        margin: 1.5em 0;
+        padding: 0.5em 1em;
+        color: var(--text-secondary);
+        background: var(--blockquote-bg);
+    }
+
+    .post-content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 1em;
+        overflow-x: auto;
+    }
+
+    .post-content code {
+        background: var(--code-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: monospace;
+        color: var(--accent-primary);
+    }
+
+    .post-content pre code {
+        background: none;
+        padding: 0;
+        color: var(--text-primary);
+    }
+
+    /* New Post Form Styles */
+    .container {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+    }
+
+    input[type="password"], textarea {
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+    }
+
+    button {
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border: none;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background: #946e00;
+    }
+
+    .message {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+
+    .message.error {
+        background: #fdf2f2;
+        color: #c53030;
+        border: 1px solid #feb2b2;
+    }
+
+    .message.success {
+        background: #f0fff4;
+        color: #2f855a;
+        border: 1px solid #9ae6b4;
+    }
+
+    .help {
+        border-top: 1px solid var(--border-color);
+    }
     </style>
 </head>
 <body>
@@ -167,6 +282,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="hidden" name="password" value="<?php echo htmlspecialchars($_POST['password']); ?>">
                 <div>
                     <textarea id="content" name="content" required></textarea><br />
+                    <label for="content">markdown supported:</label>
                 </div>
                 <div>
                     <button type="submit">post</button>
