@@ -208,162 +208,227 @@ $total_pages = $result['total_pages'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>timnetworks weblog</title>
+    <meta name="title" content="timnetworks weblog">
+    <meta name="description" content="standard-issue weblog by timnetworks corporation">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>standard-issue weblog</title>
-    <meta name="title" content=" weblog">
-    <meta name="description" content="standard-issue weblog">
-    <meta property="og:url" content="https://www.website.com/blog">
+    <meta name="title" content="timnetworks weblog">
+    <meta name="description" content="standard-issue weblog by timnetworks corporation">
+    <meta property="og:url" content="https://www.blog.timnetworks.net">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="weblog">
-    <meta property="og:description" content="standard-issue weblog">
-    <meta property="og:image" content="https://www.website.com/opengraph.png">
+    <meta property="og:title" content="timnetworks weblog">
+    <meta property="og:description" content="standard-issue weblog by timnetworks corporation">
+    <meta property="og:image" content="https://blog.timnetworks.net/opengraph.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="www.website.com">
-    <meta property="twitter:url" content="https://www.website.com/blog">
-    <meta name="twitter:title" content="weblog">
-    <meta name="twitter:description" content="standard-issue weblog">
-    <meta name="twitter:image" content="https://www.website.com/opengraph.png">
+    <meta property="twitter:domain" content="www.blog.timnetworks.net">
+    <meta property="twitter:url" content="https://www.blog.timnetworks.net">
+    <meta name="twitter:title" content="timnetworks weblog">
+    <meta name="twitter:description" content="standard-issue weblog by timnetworks corporation">
+    <meta name="twitter:image" content="https://blog.timnetworks.net/opengraph.png">
+    <meta name="twitter:site" content="@timnetworkscorp"/>
+    <meta name="robots" content="index, follow"/>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #f5f5f5;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        h1 {
-            color: #333;
-            margin: 0;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin: 2rem 0;
-        }
-        
-        article {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .post-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .post-date a {
-            color: #666;
-            text-decoration: none;
-        }
-        
-        .post-date a:hover {
-            text-decoration: underline;
-        }
-        
-        img {
+    /* Base colors */
+    :root {
+        --bg-primary: #FFFEF1;
+        --bg-secondary: #F5F4E8;
+        --bg-tertiary: #ECEADD;
+        --text-primary: #2C3E50;
+        --text-secondary: #546E7A;
+        --accent-primary: #B58900;
+        --accent-secondary: #268BD2;
+        --border-color: #E6E4D1;
+        --code-bg: #F7F6E9;
+        --blockquote-bg: #FAFAF2;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        color: var(--accent-primary);
+        margin: 0;
+    }
+
+    .subtitle {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: var(--border-color);
+        margin: 2rem 0;
+    }
+
+    article {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+    }
+
+    .post-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .post-date a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+    }
+
+    .post-date a:hover {
+        text-decoration: underline;
+    }
+       
+    img {
             max-width: 100%;
             height: auto;
         }
-        
-        .pagination {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-        }
-        
-        .pagination a, .pagination span {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
-            border-radius: 4px;
-            background: white;
-            color: #333;
-            text-decoration: none;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .pagination .current {
-            background: #333;
-            color: white;
-        }
-        
-        .pagination a:hover {
-            background: #eee;
-        }
 
-        /* Markdown Styles */
-        .post-content h1 { font-size: 2em; margin: 0.67em 0; }
-        .post-content h2 { font-size: 1.5em; margin: 0.75em 0; }
-        .post-content h3 { font-size: 1.17em; margin: 0.83em 0; }
-        .post-content h4 { margin: 1.12em 0; }
-        .post-content h5 { font-size: 0.83em; margin: 1.5em 0; }
-        .post-content h6 { font-size: 0.75em; margin: 1.67em 0; }
-        .post-content strong { font-weight: bold; }
-        .post-content em { font-style: italic; }
-        .post-content u { text-decoration: underline; }
-        
-        .post-content blockquote {
-            border-left: 4px solid #ddd;
-            margin: 1.5em 0;
-            padding: 0.5em 1em;
-            color: #666;
-            background: #f9f9f9;
-        }
-        
-        .post-content pre {
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 1em;
-            overflow-x: auto;
-        }
-        
-        .post-content code {
-            background: #f4f4f4;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-family: monospace;
-        }
-        
-        .post-content pre code {
-            background: none;
-            padding: 0;
-        }
-        
-        .post-content ul, .post-content ol {
-            margin: 1em 0;
-            padding-left: 2em;
-        }
-        
-        .post-content li {
-            margin: 0.5em 0;
-        }
+    /* Pagination styles */
+    .pagination {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+
+    .pagination a, .pagination span {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        border-radius: 4px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .pagination .current {
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border-color: var(--accent-primary);
+    }
+
+    .pagination a:hover {
+        background: var(--bg-tertiary);
+    }
+
+    /* Markdown Content Styles */
+    .post-content h1, .post-content h2, .post-content h3, 
+    .post-content h4, .post-content h5, .post-content h6 {
+        color: var(--accent-primary);
+    }
+
+    .post-content a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+    }
+
+    .post-content a:hover {
+        text-decoration: underline;
+    }
+
+    .post-content blockquote {
+        border-left: 4px solid var(--accent-primary);
+        margin: 1.5em 0;
+        padding: 0.5em 1em;
+        color: var(--text-secondary);
+        background: var(--blockquote-bg);
+    }
+
+    .post-content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 1em;
+        overflow-x: auto;
+    }
+
+    .post-content code {
+        background: var(--code-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: monospace;
+        color: var(--accent-primary);
+    }
+
+    .post-content pre code {
+        background: none;
+        padding: 0;
+        color: var(--text-primary);
+    }
+
+    /* New Post Form Styles */
+    .container {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+    }
+
+    input[type="password"], textarea {
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+    }
+
+    button {
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border: none;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background: #946e00;
+    }
+
+    .message {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+
+    .message.error {
+        background: #fdf2f2;
+        color: #c53030;
+        border: 1px solid #feb2b2;
+    }
+
+    .message.success {
+        background: #f0fff4;
+        color: #2f855a;
+        border: 1px solid #9ae6b4;
+    }
+
+    .help {
+        border-top: 1px solid var(--border-color);
+    }
     </style>
 </head>
 <body>
     <header>
         <h1>weblog</h1>
-        <div class="subtitle">standard issue weblog</div>
+        <div class="subtitle">nothing to like (or subscribe to)</div>
     </header>
     
     <hr>
@@ -410,7 +475,7 @@ $total_pages = $result['total_pages'];
     <hr>
 
     <newpost>
-        <center><p>This project is on <a href="https://github.com/timnetworks/smol-blog">Github</a> under the MIT license. | <a href="./newpost.php">New post.</a></p></center>
+        <center><p>&copy; 2025 <a href="https://timnetworks.com">timnetworks</a> corporation. | This project is on <a href="https://github.com/timnetworks/smol-blog">Github</a> under the MIT license. | <a href="./newpost.php">New post</a></p></center>
     </newpost>
 </body>
 </html>
