@@ -250,6 +250,7 @@ $total_pages = $result['total_pages'];
         padding: 2rem;
         background: var(--bg-primary);
         color: var(--text-primary);
+        position: relative;
     }
 
     header {
@@ -423,9 +424,79 @@ $total_pages = $result['total_pages'];
     .help {
         border-top: 1px solid var(--border-color);
     }
+
+    /* Dropdown Menu Styles */
+    .dropdown {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        z-index: 100;
+    }
+
+    .dropdown-btn {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-btn:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background: var(--bg-secondary);
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        padding: 0.5rem 0;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: var(--text-primary);
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-copyright {
+        padding: 0.5rem 1rem;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 0.5rem;
+    }
     </style>
 </head>
 <body>
+    <div class="dropdown">
+        <button class="dropdown-btn">Menu &#9662;</button>
+        <div class="dropdown-content">
+            <a href="https://github.com/timnetworks/smol-blog">Github</a>
+            <a href="./newpost.php">New post</a>
+            <a href="https://timnetworks.com">timnetworks</a>
+            <div class="dropdown-copyright">&copy; 2025 timnetworks corporation.</div>
+        </div>
+    </div>
+    
     <header>
         <h1>weblog</h1>
         <div class="subtitle">nothing to like (or subscribe to)</div>
@@ -473,9 +544,6 @@ $total_pages = $result['total_pages'];
     </main>
 
     <hr>
-
-    <newpost>
-        <center><p>&copy; 2025 <a href="https://timnetworks.com">timnetworks</a> corporation. | This project is on <a href="https://github.com/timnetworks/smol-blog">Github</a> under the MIT license. | <a href="./newpost.php">New post</a></p></center>
-    </newpost>
+    <p>♥️ Thanks for visiting.</p>
 </body>
 </html>
